@@ -31,3 +31,7 @@ class SecretDiary
   end
 
 end
+
+class Pages
+
+end

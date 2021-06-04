@@ -44,3 +44,7 @@ describe SecretDiary do
 
   end
 end
+
+describe Pages do
+  
+end

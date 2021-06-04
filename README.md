@@ -38,3 +38,10 @@ When the user locks the diary, by calling `lock`, `add_entry` and `get_entries` 
 **Then**, when all your tests are green, reorganise it into classes with high cohesion.
 
 This will also involve reorganising your tests!
+
+## TODO
+
+Reorganise into classes with high cohesion:
+* Use Forwarding (OOP) - using a member of an object results in actually using the corresponding member of a different object: the use is forwarded to another object.
+The forwarding object is frequently called a wrapper object. 
+Reorganise tests
