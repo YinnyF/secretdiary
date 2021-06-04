@@ -5,13 +5,13 @@ class SecretDiary
   end
 
   def add_entry(message) # only allow calling add_entry if unlocked
-    raise 'It is locked!' if locked?
+    raise 'It is locked!' if @locked
 
     @message = message
   end
 
   def get_entries # only allow calling get_entries if unlocked
-    raise 'It is locked!' if locked?
+    raise 'It is locked!' if @locked
 
     @message
   end
@@ -22,12 +22,6 @@ class SecretDiary
 
   def lock
     @locked = true
-  end
-
-  private
-
-  def locked?
-    @locked == true
   end
 
 end
