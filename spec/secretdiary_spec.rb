@@ -52,5 +52,8 @@ describe Pages do
     expect(subject.add_entries(message)).to eq message
   end
 
-
+  it 'can read entries' do
+    subject.add_entries(message)
+    expect(subject.get_entries).to eq message
+  end
 end
