@@ -33,5 +33,7 @@ class SecretDiary
 end
 
 class Pages
-
+  def add_entries(message)
+    @message = message
+  end
 end

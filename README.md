@@ -44,4 +44,5 @@ This will also involve reorganising your tests!
 Reorganise into classes with high cohesion:
 * Use Forwarding (OOP) - using a member of an object results in actually using the corresponding member of a different object: the use is forwarded to another object.
 The forwarding object is frequently called a wrapper object. 
-Reorganise tests
+
+Understand how to TDD this?

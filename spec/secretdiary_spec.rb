@@ -46,5 +46,11 @@ describe SecretDiary do
 end
 
 describe Pages do
+  let(:message) { "I love McDonalds!" }
   
+  it 'can add_entries' do
+    expect(subject.add_entries(message)).to eq message
+  end
+
+
 end
