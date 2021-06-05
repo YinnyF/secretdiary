@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 class SecretDiary
-  
   def initialize(page = Page.new)
     @locked = true
     @page = page
@@ -13,18 +14,17 @@ class SecretDiary
     @locked = true
   end
 
-  def add_entry(message) # only allow calling add_entry on pages if unlocked
+  def add_entry(message)
     raise 'It is locked!' if @locked
 
     @page.add_entry(message)
   end
 
-  def get_entries # only allow calling get_entries on pages if unlocked
+  def read_entries
     raise 'It is locked!' if @locked
 
     @page.get_entries
   end
-
 end
 
 class Page
@@ -36,7 +36,7 @@ class Page
     @messages << message
   end
 
-  def get_entries
+  def read_entries
     @messages
   end
 end

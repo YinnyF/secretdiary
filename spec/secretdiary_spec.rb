@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 require 'secretdiary'
 
 describe SecretDiary do
-  let(:message) { "I love McDonalds!" }
+  let(:message) { "I love McDonald's!" }
   let(:page) { double('page') }
   subject { described_class.new(page) }
 
   context 'initially locked' do
     it 'raises an error when trying to add an entry' do
-      expect {subject.add_entry(message)}.to raise_error 'It is locked!'
+      expect { subject.add_entry(message) }.to raise_error 'It is locked!'
     end
 
     it 'raises an error when trying to get entries' do
-      expect {subject.get_entries}.to raise_error 'It is locked!'
+      expect { subject.read_entries }.to raise_error 'It is locked!'
     end
   end
 
@@ -29,7 +31,7 @@ describe SecretDiary do
     it 'can retrieve entries' do
       subject.add_entry(message)
 
-      expect(subject.get_entries).to eq message
+      expect(subject.read_entries).to eq message
     end
 
     context 'can lock the diary again' do
@@ -38,32 +40,30 @@ describe SecretDiary do
       end
 
       it 'raises an error when trying to add an entry' do
-        expect {subject.add_entry(message)}.to raise_error 'It is locked!'
+        expect { subject.add_entry(message) }.to raise_error 'It is locked!'
       end
-  
+
       it 'raises an error when trying to get entries' do
-        expect {subject.get_entries}.to raise_error 'It is locked!'
+        expect { subject.read_entries }.to raise_error 'It is locked!'
       end
     end
-
   end
 end
 
 describe Page do
-  let(:message) { "McNuggets are like my family." }
-  
+  let(:message) { 'McNuggets are like my family.' }
+
   it 'can add_entries' do
     expect(subject.add_entry(message)).to eq [message]
   end
 
   it 'can read entries' do
     subject.add_entry(message)
-    expect(subject.get_entries).to eq [message]
+    expect(subject.read_entries).to eq [message]
   end
 
   it 'can add multiple entries' do
     10.times { subject.add_entry(message) }
-    expect(subject.get_entries).to eq [].fill(message, 0, 10)
+    expect(subject.read_entries).to eq [].fill(message, 0, 10)
   end
-
 end
