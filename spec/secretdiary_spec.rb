@@ -2,6 +2,8 @@ require 'secretdiary'
 
 describe SecretDiary do
   let(:message) { "I love McDonalds!" }
+  let(:page) { double('page') }
+  subject { described_class.new(page) }
 
   context 'initially locked' do
     it 'raises an error when trying to add an entry' do
@@ -16,6 +18,8 @@ describe SecretDiary do
   context 'unlocked' do
     before do
       subject.unlock
+      allow(page).to receive(:add_entry).and_return message
+      allow(page).to receive(:get_entries).and_return message
     end
 
     it 'can add an entry' do
@@ -45,15 +49,16 @@ describe SecretDiary do
   end
 end
 
-describe Pages do
-  let(:message) { "I love McDonalds!" }
+# describe Page do
+#   let(:message) { "McNuggets are like my family." }
   
-  it 'can add_entries' do
-    expect(subject.add_entries(message)).to eq message
-  end
+#   it 'can add_entries' do
+#     expect(subject.add_entry(message)).to eq message
+#   end
 
-  it 'can read entries' do
-    subject.add_entries(message)
-    expect(subject.get_entries).to eq message
-  end
-end
+#   it 'can read entries' do
+#     subject.add_entry(message)
+#     expect(subject.get_entries).to eq message
+#   end
+
+# end

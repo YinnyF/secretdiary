@@ -1,19 +1,8 @@
 class SecretDiary
   
-  def initialize
+  def initialize(page = Page.new)
     @locked = true
-  end
-
-  def add_entry(message) # only allow calling add_entry if unlocked
-    raise 'It is locked!' if @locked
-
-    @message = message
-  end
-
-  def get_entries # only allow calling get_entries if unlocked
-    raise 'It is locked!' if @locked
-
-    @message
+    @page = page
   end
 
   def unlock
@@ -24,14 +13,26 @@ class SecretDiary
     @locked = true
   end
 
-end
+  def add_entry(message) # only allow calling add_entry on pages if unlocked
+    raise 'It is locked!' if @locked
 
-class Pages
-  def add_entries(message)
-    @message = message
+    @page.add_entry(message)
   end
 
-  def get_entries
-    @message
+  def get_entries # only allow calling get_entries on pages if unlocked
+    raise 'It is locked!' if @locked
+
+    @page.get_entries
   end
+
 end
+
+# class Page
+#   def add_entry(message)
+#     @message = message
+#   end
+
+#   def get_entries
+#     @message
+#   end
+# end
