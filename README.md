@@ -59,4 +59,18 @@ This will also involve reorganising your tests!
 
 6. So then, I created a double to stand in for an instance of `Page` class. I commented out the Page class and checked that the tests for `SecretDiary` passed and it did. 
 
+7. I ran a feature test in IRB to check the functionality.
+
+8. Now just out of curiousity, what would happen if we want to add more than one message to the diary? It seems I can create a unit test for Pages, and then implement the changes in Pages class without breaking anything. And unsurprisingly when you run a test in irb, everything seems to work as expected.
+
+```irb
+require './lib/secretdiary.rb'
+diary = SecretDiary.new
+diary.unlock
+diary.add_entry("Hello") # => ["Hello"] 
+diary.add_entry("World") # => ["Hello", "World"] 
+diary.add_entry("!!!")  # => ["Hello", "World", "!!!"]
+diary.get_entries # => ["Hello", "World", "!!!"]
+```
+
 N.B. For simplicity, the `SecretDiary` and `Page` classes live in one ruby file, and the unit tests for both classes are in one rspec spec file.

@@ -49,16 +49,21 @@ describe SecretDiary do
   end
 end
 
-# describe Page do
-#   let(:message) { "McNuggets are like my family." }
+describe Page do
+  let(:message) { "McNuggets are like my family." }
   
-#   it 'can add_entries' do
-#     expect(subject.add_entry(message)).to eq message
-#   end
+  it 'can add_entries' do
+    expect(subject.add_entry(message)).to eq [message]
+  end
 
-#   it 'can read entries' do
-#     subject.add_entry(message)
-#     expect(subject.get_entries).to eq message
-#   end
+  it 'can read entries' do
+    subject.add_entry(message)
+    expect(subject.get_entries).to eq [message]
+  end
 
-# end
+  it 'can add multiple entries' do
+    10.times { subject.add_entry(message) }
+    expect(subject.get_entries).to eq [].fill(message, 0, 10)
+  end
+
+end

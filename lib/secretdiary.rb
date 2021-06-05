@@ -27,12 +27,16 @@ class SecretDiary
 
 end
 
-# class Page
-#   def add_entry(message)
-#     @message = message
-#   end
+class Page
+  def initialize
+    @messages = []
+  end
 
-#   def get_entries
-#     @message
-#   end
-# end
+  def add_entry(message)
+    @messages << message
+  end
+
+  def get_entries
+    @messages
+  end
+end
